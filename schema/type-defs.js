@@ -10,9 +10,20 @@ const typeDefs = gql`
     friends: [User]
   }
 
+  type Services {
+    id: ID!
+    name: String!
+    price: Int!
+    img: String
+    desc: String
+  }
+
   type Query {
     users: [User!]!
     user(id: ID!): User!
+    services:[Services!]!
+    service(id: ID!): Services!
+    
   }
 
   enum Nationality {
