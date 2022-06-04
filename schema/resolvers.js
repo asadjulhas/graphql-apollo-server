@@ -19,8 +19,18 @@ const resolvers = {
       const id = args.id;
       const service = _.find(services, { id: Number(id) });
       return service;
+    },
+    available: (parent, args) => {
+      const isAvailable = args.isAvailable;
+      const service = _.filter(services, { isAvailable });
+      return service;
     }
   },
+  User: {
+    favService: () => {
+      return _.filter(services, (service) => service.price < 1000 && service.price > 500)
+    }
+  }
 };
 
 module.exports = {resolvers};

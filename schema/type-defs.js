@@ -8,6 +8,7 @@ const typeDefs = gql`
     age: Int
     nationality: Nationality!
     friends: [User]
+    favService: [Services]
   }
 
   type Services {
@@ -16,6 +17,7 @@ const typeDefs = gql`
     price: Int!
     img: String
     desc: String
+    isAvailable: Boolean!
   }
 
   type Query {
@@ -23,6 +25,7 @@ const typeDefs = gql`
     user(id: ID!): User!
     services:[Services!]!
     service(id: ID!): Services!
+    available(isAvailable: Boolean!): [Services]!
     
   }
 
