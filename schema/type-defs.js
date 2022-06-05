@@ -29,6 +29,26 @@ const typeDefs = gql`
     
   }
 
+  input userCreateInput {
+    name: String!
+    userName: String!
+    age: Int = 18
+    nationality: Nationality = BD
+  }
+
+  input createServiceInput {
+    name: String!
+    price: Int!
+    img: String
+    desc: String
+    isAvailable: Boolean!
+  }
+
+  type Mutation {
+    createUser(input: userCreateInput!): User
+    createService(input: createServiceInput!): Services
+  }
+
   enum Nationality {
     USA
     BD

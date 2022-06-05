@@ -30,7 +30,27 @@ const resolvers = {
     favService: () => {
       return _.filter(services, (service) => service.price < 1000 && service.price > 500)
     }
+  },
+
+  Mutation: {
+    createUser: (parent, args) => {
+      const newUser = args.input;
+      const lastId = userList[userList.length - 1].id;
+      newUser.id = lastId + 1
+      userList.push(newUser);
+      return newUser;
+    },
+
+    createService: (parent, args) => {
+      const service = args.input;
+      const lastId = services[services.length - 1].id;
+      service.id = lastId + 1
+      services.push(service)
+      return service
+    }
+
   }
+
 };
 
 module.exports = {resolvers};
