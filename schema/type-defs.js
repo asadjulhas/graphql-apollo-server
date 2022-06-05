@@ -36,6 +36,11 @@ const typeDefs = gql`
     nationality: Nationality = BD
   }
 
+  input updateUserInput {
+    id: ID!
+    newUserName: String!
+  }
+
   input createServiceInput {
     name: String!
     price: Int!
@@ -46,6 +51,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(input: userCreateInput!): User
+    updateUser(input: updateUserInput~): User
     createService(input: createServiceInput!): Services
   }
 
